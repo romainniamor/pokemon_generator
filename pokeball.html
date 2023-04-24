@@ -4,203 +4,24 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Pokeball</title>
   </head>
   <body>
-    <div class="container">
-<button>
-    <div class="pokeball" /></div>
-</button>
-      
- 
+    <nav>
+      <img src="ressources/logo.png" />
+    </nav>
+    <div class="content">
+      <div class="PokeCard">
+        <div class="pokeName"></div>
+        <div class="pokeType"></div>
+        <img src="" alt="" class="pokeImg" />
+        <button>
+          <div class="pokeball"></div>
+        </button>
+      </div>
+    </div>
+    <footer>Footer</footer>
   </body>
+  <script src="script.js"></script>
 </html>
-
-<style>
-  :root {
-    --white: #fff;
-    --red: #e53935;
-    --black: #212121;
-    --gray: #eee;
-    --medium: #9f9f9f;
-    --dark: #434343;
-  }
-
-  /* Base */
-
-  * {
-    box-sizing: border-box;
-    background: rgb(220, 220, 220);
-  }
-
-  body {
-    background-color: var(--gray);
-  }
-
-  /* Pokeball styles */
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  .pokeball {
-    position: relative;
-    cursor: pointer;
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(
-      to bottom,
-      var(--red),
-      var(--red) 48%,
-      var(--black) 48%,
-      var(--black) 55%,
-      var(--white) 55%
-    );
-    border-radius: 50%;
-    border: 1px solid var(--black);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), inset 8px 5px 0 rgba(0, 0, 0, 0.2);
-    animation-duration: 900ms;
-    animation-name: shake;
-    animation-iteration-count: infinite;
-    transition: transform 0.3s ease-out;
-    z-index: 2;
-  }
-
-  .pokeball.animate {
-    transform: scale(1.05);
-  }
-
-  /*effet lumineux*/
-  .pokeball:before {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 20px;
-    right: 18px;
-    width: 13px;
-    height: 12px;
-    background-color: rgba(255, 255, 255, 0.4);
-    border-radius: 50%;
-  }
-
-  /* rond int. */
-
-  .pokeball:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 30px;
-    height: 30px;
-    background-color: var(--white);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    border: 7px solid var(--black);
-    box-shadow: -5px -3px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  button {
-    
-    position: relative;
-    padding: 25px;
-    box-shadow: 0px -3px 9px 2px rgba(66,66,66,0.49) inset;
-    border: none;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  button::before, button::after{
-    content: "";
-    position: absolute;
-    width: 120%;
-    height: 50%;
-
-    background-repeat: no-repeat;
-  }
-
-  button.animate::after{
-    left: 50%;
-    top: -10%;
-    transform: translateX(-50%);
-    background-image: radial-gradient(circle, var(--medium) 20%, transparent 15% ), 
-    radial-gradient(circle, transparent 20%, var(--medium) 20%, transparent 25% ),
-    radial-gradient(circle, var(--gray) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--dark) 20%, transparent 15% ),
-     radial-gradient(circle, var(--medium) 20%, transparent 15% );
-    background-size: 15% 15%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 15% 15%, 10% 10%, 10% 10%, 20% 20%;
-    background-position: 5% 90%, 10% 90%, 12% 90%, 15% 90%, 20% 90%, 23% 90%, 28% 90%, 30% 90%, 40% 90%;
-    animation: topExplose 0.5s ease-in-out infinite;  
-}
-
-@keyframes topExplose {
-    50% {
-        background-position: 0% 80%, 0% 30%, 12% 40%, 25% 0%, 30% 30%, 23% 50%, 28% 60%, 80% 30%, 70% 10%;
-    }
-
-     100% {
-        background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 10% 70%, 50% 40%, 90% 20%, 30% 30%;
-        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    }
-    
-}
-
-  button.animate::before{
-    bottom: -10%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-image: radial-gradient(circle, var(--medium) 20%, transparent 15% ), 
-    radial-gradient(circle, transparent 20%, var(--dark) 20%, transparent 25% ),
-    radial-gradient(circle, var(--gray) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, transparent 20%, var(--dark) 20%, transparent 25% ),
-    radial-gradient(circle, var(--medium) 20%, transparent 15% ),
-    radial-gradient(circle, var(--dark) 20%, transparent 15% ),
-     radial-gradient(circle, var(--medium) 20%, transparent 15% );
-    background-size: 15% 15%, 20% 20%, 25% 25%, 20% 20%, 20% 20%, 15% 15%, 20% 20%, 15% 15%, 10% 10%, 25% 25%;
-    background-position: 15% 0%, 30% 10%, 40% 10%, 55% 0%, 70% 0%, 85% 0%, 65% 10%, 70% 0%, 55% 0%, 90% 0%;
-    animation: bottomExplose 0.5s ease-in-out infinite;  
-  }
-
-  @keyframes bottomExplose {
-    50% {
-        background-position: 0% 80%, 20% 80%, 30% 50%, 60% 100%, 70% 70%, 90% 80%, 70% 60%, 50% 80%, 10% 0%;
-    }
-
-     100% {
-        background-position: 100% 90%, 20% 90%, 90% 70%, 70% 100%, 30% 80%, 70% 10%, 50% 100%, 100% 80%, 10% 0%;
-        background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
-    }
-    
-}
-
-
-
-
-
-</style>
-
-<script>
-  const button = document.querySelector("button");
-  const pokeBall = document.querySelector(".pokeball");
-
-  button.addEventListener("click", (e) => {
-    e.preventDefault()
-    button.classList.add('animate');
-    pokeBall.classList.add('animate')
-
-    setTimeout(() => {
-         button.classList.remove('animate');
-         pokeBall.classList.remove('animate')
-    }, 400)
-  });
-</script>
