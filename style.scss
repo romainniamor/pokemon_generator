@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "silkscreennormal";
+  src: url("/font/slkscr-webfont.woff") format("woff");
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #555;
+  position: relative;
+  font-family: "silkscreennormal", Courier, monospace;
+}
+
+$pixelSize: 10px;
+
+$pokeball: (O O O O O O X X X X O O O O O) (O O O O X X R R R R X X O O O)
+  (O O O X R R R R R R R R X O O) (O O X R R R R R R R R R R X O)
+  (O O X R R R R R R R R R R X O) (O X R R R R R X X R R R R R X)
+  (O X R R R R X W W X R R R R X) (O X X X X X X W W X X X X X X)
+  (O X W W W W W X X W W W W W X) (O O X W W W W W W W W W W X O)
+  (O O X W W W W W W W W W W X O) (O O O X W W W W W W W W X O O)
+  (O O O O X X W W W W X X O O O) (O O O O O O X X X X O O O O O);
+
+$message: (
+    O O O O O O X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X O
+      O O O O O
+  )
+  (
+    O O O O X X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W X
+      X O O O O
+  )
+  (
+    O O O O X X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W X
+      X O O O O
+  )
+  (
+    O O O X X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      X X O O O
+  )
+  (
+    O O O X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      W X O O O
+  )
+  (
+    O O O X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      W X O O O
+  )
+  (
+    O O O X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      W X O O O
+  )
+  (
+    O O O X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      W X O O O
+  )
+  (
+    O O O X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      W X O O O
+  )
+  (
+    O O O X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      W X O O O
+  )
+  (
+    O O O X X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W
+      X X O O O
+  )
+  (
+    O O O O X X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W X
+      X O O O O
+  )
+  (
+    O O O O X X W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W W X
+      X O O O O
+  )
+  (
+    O O O O O O X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X O
+      O O O O O
+  );
+
+$color: (
+  "X": black,
+  "R": red,
+  "W": white,
+);
+
+/* variable de pixelisation */
+
+@function shadow($var) {
+  $shadow: ();
+  @for $i from 1 through length($var) {
+    $row: nth($var, $i);
+    @for $j from 1 through length($row) {
+      $item: nth($row, $j);
+      @if map-has-key($color, $item) and $item != "O" {
+        $shadow: $shadow,
+          ($pixelSize * $j) ($pixelSize * $i) map-get($color, $item);
+      }
+    }
+  }
+  @return $shadow;
+}
+
+.messageContent {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  cursor: pointer;
+  width: 460px;
+  height: 160px;
+
+  .message {
+    width: $pixelSize;
+    height: $pixelSize;
+    box-shadow: shadow($message);
+    .pokeName {
+      width: 320px;
+      position: absolute;
+      top: 35%;
+      left: 40%;
+      transform: translate(-35%, -20%);
+      padding: 10px;
+      font-size: 30px;
+      text-transform: capitalize;
+      color: #313131;
+    }
+  }
+  .imgContent {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 50%;
+    right: 18%;
+    transform: translate(-18%, -50%);
+  }
+}
+
+.button {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -65%);
+  cursor: pointer;
+  width: 180px;
+  height: 160px;
+  border-radius: 50%;
+  .pokeball {
+    width: $pixelSize;
+    height: $pixelSize;
+    box-shadow: shadow($pokeball);
+  }
+}
