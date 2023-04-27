@@ -1,5 +1,5 @@
 #pokemon_generator
-Basic pokemon generator using 'PokeApi' with pixel style on scss.
+Basic pokemon generator using 'PokeApi' with pixel style with scss.
 
 🛠 Skills
 Javascript, HTML, SCSS...
