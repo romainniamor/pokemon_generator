@@ -1,10 +1,12 @@
-#pokemon_generator
+# pokemon_generator
+
 Basic pokemon generator using 'PokeApi' with pixel style with scss.
 
-🛠 Skills
+## 🛠 Skills
 Javascript, HTML, SCSS...
 
-## Screenshots
+## 📺 Screenshots
+
 
 ![App Screenshot](https://raw.githubusercontent.com/romainniamor/pokemon_generator/main/screenshot/screen_1.png)
 
